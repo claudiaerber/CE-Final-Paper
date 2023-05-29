@@ -95,5 +95,44 @@ mean(whistles$Descending)
 #mean Constant whistles
 mean(whistles$Constant)
 
-# number of observations
+#Create a pairs plot for all variables
+# vanilla pairs plot
+pairs(whistles[, c(1, 2, 3)])
+
+
+#Create a boxplot to visualise the differences in Ascending at each Behaviour
+summary(whistles)
+whistlesBE <- read.table('data/whistlesBE.txt', header = TRUE, stringsAsFactors = TRUE)
+summary(whistlesBE)
+
+# convert variables to factors
+whistlesBE$ascending <- factor(whistlesBE$ascending)
+whistlesBE$descending <- factor(whistlesBE$descending)
+whistlesBE$constant <- factor(whistlesBE$constant)
+
+str(whistlesBE)
+
+#Create a pairs plot for all variables
+# vanilla pairs plot
+pairs(whistlesBE[, c(2, 3, 4)])
+
+boxplot(ascending ~ Behaviour, data = whistlesBE, xlab = "Behaviour", ylab = "ascending")
+
+Foraging = 1
+Traveling = 2
+Fishing = 3
+Socializing = 4
+
+
+whistlesBEnum <- read.table('data/whistlesBEnum.txt', header = TRUE, stringsAsFactors = TRUE)
+summary(whistlesBE)
+
+pairs(whistlesBEnum[, c(3, 4, 5)])
+summary(whistlesBEnum)
+
+boxplot(ascending ~ Behaviour, data = whistlesBEnum, xlab = "Behaviour", ylab = "ascending")
+
+barplot(ascending ~ Behaviour, data = whistlesBEnum, xlab = "Behaviour", ylab = "ascending")
+
+plot(ascending ~ Behaviour, data = whistlesBEnum, xlab = "Behaviour", ylab = "ascending")
 
